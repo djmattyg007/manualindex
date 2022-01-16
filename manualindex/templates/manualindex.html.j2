@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.crumbs {
+    list-style: none;
+    padding-left: 0;
+}
+.crumb {
+    display: inline-block;
+}
+.crumb:not(:last-child)::after {
+    content: " /";
+}
+table > thead > tr > th,
+table > tbody > tr > td {
+    padding: 4px 8px;
+}
+table > thead > tr > th:first-child,
+table > tbody > tr > td:first-child {
+    padding-left: 0;
+}
+.entry-size {
+    text-align: right;
+}
+</style>
+</head>
+<body>
+<h1>Index of /{% if has_parent %}{{ dirpath_r }}{% endif %}</h1>
+<div>
+    <ol class="crumbs">
+    {% for crumb in breadcrumbs %}
+    <li class="crumb"><a href="{{ crumb.link }}index.html">{{ crumb.label }}</a></li>
+    {% endfor %}
+    </ol>
+</div>
+<div>
+    <table>
+    <thead>
+        <tr>
+            <th style="text-align: left;">name</th>
+            <th style="text-align: left;">mtime</th>
+            <th style="text-align: right;">size</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if has_parent %}
+        <tr><td><a href="{{ breadcrumbs[-2].link }}index.html">..</a></td><td><br /></td><td><br /></td></tr>
+        {% endif %}
+        {% for entry in entries %}
+        <tr>
+            {% if entry.type == "dir" %}
+            <td><a href="{{ entry.link }}index.html">{{ entry.label }}</a></td>
+            {% else %}
+            <td><a href="{{ entry.link }}">{{ entry.label }}</a></td>
+            {% endif %}
+            <td>{{ entry.mtime.strftime(date_format) }}</td>
+            {% if entry.type == "dir" %}
+            <td class="entry-size">-</td>
+            {% else %}
+            <td class="entry-size">{{ entry.size_human }}<td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+</div>
+</body>
+</html>

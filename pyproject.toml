@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "manualindex"
+version = "1.0.0"
+description = "Generate autoindex-style HTML for your directory listings."
+authors = ["Matthew Gamble <git@matthewgamble.net>"]
+license = "GPLv3"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+Jinja2 = "^3.0.3"
+humanfriendly = "^10.0"
+
+[tool.poetry.dev-dependencies]
+black = "^21.12b0"
+check-manifest = "^0.47"
+flake8 = "^4.0.1"
+flake8-annotations-complexity = "^0.0.6"
+flake8-black = "^0.2.3"
+flake8-breakpoint = "^1.1.0"
+flake8-bugbear = "^22.1.11"
+flake8-builtins = "^1.5.3"
+flake8-comprehensions = "^3.8.0"
+flake8-eradicate = "^1.2.0"
+flake8-expression-complexity = "^0.0.9"
+flake8-isort = "^4.1.1"
+flake8-pytest-style = "^1.6.0"
+flake8-requirements = "^1.5.1"
+isort = "^5.10.1"
+pep8-naming = "^0.12.1"
+mypy = "^0.931"
+invoke = "^1.6.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
