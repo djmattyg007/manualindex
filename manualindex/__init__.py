@@ -17,7 +17,9 @@ from .manualindex import (
 
 default_template_path = Path(__file__).parent / "templates"
 default_template_name = "manualindex.html.j2"
-default_jinja_env = Environment(loader=FileSystemLoader(default_template_path))
+default_jinja_env = Environment(
+    loader=FileSystemLoader(default_template_path), autoescape=True, trim_blocks=True
+)
 default_template = default_jinja_env.get_template(default_template_name)
 
 

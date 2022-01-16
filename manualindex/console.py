@@ -39,7 +39,9 @@ def main(args: Optional[Sequence[str]] = None):
     if not pargs.directory.is_dir():
         raise Exception("Invalid directory specified.")
 
-    jinja_env = Environment(loader=FileSystemLoader(pargs.template_path))
+    jinja_env = Environment(
+        loader=FileSystemLoader(pargs.template_path), autoescape=True, trim_blocks=True
+    )
     template = jinja_env.get_template(pargs.template_name)
 
     generate(
