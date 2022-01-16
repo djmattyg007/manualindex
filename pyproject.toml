@@ -6,6 +6,13 @@ build-backend = "poetry.core.masonry.api"
 name = "manualindex"
 version = "1.0.0"
 description = "Generate autoindex-style HTML for your directory listings."
+keywords = ["autoindex", "html", "directory", "listing"]
+packages = [
+    { include = "manualindex" },
+]
+readme = "README.md"
+homepage = "https://github.com/djmattyg007/manualindex"
+repository = "https://github.com/djmattyg007/manualindex"
 authors = ["Matthew Gamble <git@matthewgamble.net>"]
 license = "GPLv3"
 classifiers = [
