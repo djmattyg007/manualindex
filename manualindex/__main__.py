@@ -1,6 +1,6 @@
 from argparse import ArgumentParser
 from pathlib import Path
-from zoneinfo import ZoneInfo
+from zoneinfo import ZoneInfo  # noqa: I900
 
 from jinja2 import Environment, FileSystemLoader
 

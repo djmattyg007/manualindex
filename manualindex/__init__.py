@@ -4,7 +4,15 @@ from typing import Union
 
 from jinja2 import Environment, FileSystemLoader
 
-from .manualindex import *
+from .manualindex import (
+    Breadcrumb,
+    Entry,
+    EntryType,
+    generate,
+    make_breadcrumbs,
+    make_entry,
+    make_html,
+)
 
 
 default_template_path = Path(__file__).parent / "templates"

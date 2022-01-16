@@ -3,7 +3,7 @@ import os
 from datetime import datetime, tzinfo
 from pathlib import Path
 from typing import List, Literal, Sequence, Union
-from zoneinfo import ZoneInfo
+from zoneinfo import ZoneInfo  # noqa: I900
 
 from humanfriendly import format_size
 from jinja2 import Template
@@ -18,7 +18,7 @@ class Entry:
     extensions: Sequence[str]
     link: str
     hidden: bool
-    type: EntryType
+    entry_type: EntryType
     mtime: datetime
     size: int
     size_human: str
@@ -36,7 +36,7 @@ def make_entry(
     dirpath_p: Path,
     dirpath_r: Path,
     name: str,
-    type: EntryType,
+    entry_type: EntryType,
     /,
 ) -> Entry:
     fullpath = dirpath_p / name
@@ -46,7 +46,7 @@ def make_entry(
         extensions.append("".join(fullpath.suffixes[i:]))
 
     link = f"{base_urlpath}{dirpath_r}/{name}"
-    if type == "dir":
+    if entry_type == "dir":
         link += "/"
 
     stat = fullpath.stat()
@@ -57,7 +57,7 @@ def make_entry(
         extensions=extensions,
         link=link,
         hidden=name.startswith("."),
-        type=type,
+        entry_type=entry_type,
         mtime=mtime,
         size=stat.st_size,
         size_human=format_size(stat.st_size, binary=True),
