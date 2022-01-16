@@ -147,3 +147,14 @@ def generate(
         html = make_html(template, dirpath_p, dirpath_r, breadcrumbs, entries, base_urlpath=base_urlpath, date_format=date_format, date_tz=date_tz)
 
         index_p.write_text(html, encoding="utf-8")
+
+
+__all__ = (
+    "EntryType",
+    "Entry",
+    "Breadcrumb",
+    "make_entry",
+    "make_breadcrumbs",
+    "make_html",
+    "generate",
+)

@@ -4,11 +4,7 @@ from zoneinfo import ZoneInfo
 
 from jinja2 import Environment, FileSystemLoader
 
-from .manualindex import generate
-
-
-default_template_path = Path(__file__).parent / "templates"
-default_template_name = "manualindex.html.j2"
+from . import generate, default_template_path, default_template_name
 
 
 def make_parser() -> ArgumentParser:
