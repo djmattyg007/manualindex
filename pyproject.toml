@@ -55,6 +55,9 @@ invoke = "^1.6.0"
 "Source" = "https://github.com/djmattyg007/manualindex"
 "Issues" = "https://github.com/djmattyg007/manualindex/issues"
 
+[tool.poetry.scripts]
+manualindex = "manualindex.console:main"
+
 [tool.black]
 target-version = ["py39", "py310"]
 line-length = 100
