@@ -49,13 +49,13 @@ table > tbody > tr > td:first-child {
         {% endif %}
         {% for entry in entries %}
         <tr>
-            {% if entry.type == "dir" %}
+            {% if entry.entry_type == "dir" %}
             <td><a href="{{ entry.link }}index.html">{{ entry.label }}</a></td>
             {% else %}
             <td><a href="{{ entry.link }}">{{ entry.label }}</a></td>
             {% endif %}
             <td>{{ entry.mtime.strftime(date_format) }}</td>
-            {% if entry.type == "dir" %}
+            {% if entry.entry_type == "dir" %}
             <td class="entry-size">-</td>
             {% else %}
             <td class="entry-size">{{ entry.size_human }}<td>
