@@ -15,7 +15,8 @@ default_template = default_jinja_env.get_template(default_template_name)
 
 def generate_default(
     base_dir: Path,
-    /, *,
+    /,
+    *,
     base_urlpath: str = "/",
     date_format: str = "%Y-%m-%d %H:%I",
     date_tz: Union[str, tzinfo] = "UTC",

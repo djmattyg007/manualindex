@@ -30,7 +30,15 @@ class Breadcrumb:
     link: str
 
 
-def make_entry(base_urlpath: str, date_tz: tzinfo, dirpath_p: Path, dirpath_r: Path, name: str, type: EntryType, /) -> Entry:
+def make_entry(
+    base_urlpath: str,
+    date_tz: tzinfo,
+    dirpath_p: Path,
+    dirpath_r: Path,
+    name: str,
+    type: EntryType,
+    /,
+) -> Entry:
     fullpath = dirpath_p / name
 
     extensions: List[str] = []
@@ -60,7 +68,8 @@ def make_breadcrumbs(
     base_urlpath: str,
     base_dir: Path,
     dirpath: Path,
-    /, *,
+    /,
+    *,
     root_label: str = "root",
 ) -> Sequence[Breadcrumb]:
     parts = dirpath.relative_to(base_dir).parts
@@ -72,11 +81,13 @@ def make_breadcrumbs(
     ]
 
     for i in range(len(parts)):
-        path = "/".join(parts[:i + 1])
-        breadcrumbs.append(Breadcrumb(
-            label=parts[i],
-            link=f"{base_urlpath}{path}/",
-        ))
+        path = "/".join(parts[: i + 1])
+        breadcrumbs.append(
+            Breadcrumb(
+                label=parts[i],
+                link=f"{base_urlpath}{path}/",
+            )
+        )
 
     return breadcrumbs
 
@@ -87,7 +98,8 @@ def make_html(
     dirpath_r: Path,
     breadcrumbs: Sequence[Breadcrumb],
     entries: Sequence[Entry],
-    /, *,
+    /,
+    *,
     base_urlpath: str = "/",
     date_format: str = "%Y-%m-%d %H:%I",
     date_tz: Union[str, tzinfo] = "UTC",
@@ -112,7 +124,8 @@ def make_html(
 def generate(
     base_dir: Path,
     template: Template,
-    /, *,
+    /,
+    *,
     base_urlpath: str = "/",
     date_format: str = "%Y-%m-%d %H:%I",
     date_tz: Union[str, tzinfo] = "UTC",
@@ -133,18 +146,31 @@ def generate(
         entries: List[Entry] = []
         for dirname in sorted(dirnames):
             if dirname == "index.html":
-                raise Exception("Found a directory named index.html, which will conflict with manual index generation.")
+                raise Exception(
+                    "Found a directory named index.html, which will conflict with manual index generation."
+                )
             entries.append(make_entry(base_urlpath, date_tz, dirpath_p, dirpath_r, dirname, "dir"))
 
         for filename in filenames:
             if filename == "index.html":
                 index_p.unlink(missing_ok=True)
                 continue
-            entries.append(make_entry(base_urlpath, date_tz, dirpath_p, dirpath_r, filename, "file"))
+            entries.append(
+                make_entry(base_urlpath, date_tz, dirpath_p, dirpath_r, filename, "file")
+            )
 
         breadcrumbs = make_breadcrumbs(base_urlpath, base_dir, dirpath_p)
 
-        html = make_html(template, dirpath_p, dirpath_r, breadcrumbs, entries, base_urlpath=base_urlpath, date_format=date_format, date_tz=date_tz)
+        html = make_html(
+            template,
+            dirpath_p,
+            dirpath_r,
+            breadcrumbs,
+            entries,
+            base_urlpath=base_urlpath,
+            date_format=date_format,
+            date_tz=date_tz,
+        )
 
         index_p.write_text(html, encoding="utf-8")
 

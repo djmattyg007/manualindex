@@ -4,7 +4,7 @@ from zoneinfo import ZoneInfo
 
 from jinja2 import Environment, FileSystemLoader
 
-from . import generate, default_template_path, default_template_name
+from . import default_template_name, default_template_path, generate
 
 
 def make_parser() -> ArgumentParser:
