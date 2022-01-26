@@ -27,6 +27,7 @@ include = [
     { path = "CHANGELOG.md", format = "sdist" },
     { path = "tasks.py", format = "sdist" },
     { path = "manualindex/templates/*" },
+    { path = "manualindex/py.typed" },
 ]
 
 [tool.poetry.dependencies]
