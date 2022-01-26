@@ -24,7 +24,9 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
 ]
 include = [
-    "CHANGELOG.md",
+    { path = "CHANGELOG.md", format = "sdist" },
+    { path = "tasks.py", format = "sdist" },
+    { path = "manualindex/templates/*" },
 ]
 
 [tool.poetry.dependencies]
