@@ -3,7 +3,7 @@ import os
 from datetime import datetime, tzinfo
 from pathlib import Path
 from typing import List, Literal, Sequence, Union
-from zoneinfo import ZoneInfo  # noqa: I900
+from zoneinfo import ZoneInfo
 
 from humanfriendly import format_size
 from jinja2 import Template

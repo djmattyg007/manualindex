@@ -1,7 +1,7 @@
 from argparse import ArgumentParser
 from pathlib import Path
 from typing import Optional, Sequence
-from zoneinfo import ZoneInfo  # noqa: I900
+from zoneinfo import ZoneInfo
 
 from jinja2 import Environment, FileSystemLoader
 
