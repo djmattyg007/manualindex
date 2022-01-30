@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "manualindex"
-version = "1.0.0"
+version = "1.0.1"
 description = "Generate autoindex-style HTML for your directory listings."
 keywords = ["autoindex", "html", "directory", "listing"]
 packages = [

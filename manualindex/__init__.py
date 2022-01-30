@@ -22,6 +22,9 @@ from .manualindex import (
 )
 
 
+__version__ = "1.0.1"
+
+
 default_template_path = Path(__file__).parent / "templates"
 default_template_name = "manualindex.html.j2"
 default_jinja_env = Environment(
