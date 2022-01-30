@@ -1,6 +1,7 @@
 # manualindex
 
 [![CI](https://github.com/djmattyg007/manualindex/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/djmattyg007/manualindex/actions/workflows/ci.yml)
+[![PyPI](https://img.shields.io/pypi/v/manualindex.svg)](https://pypi.org/project/manualindex)
 
 Generate autoindex-style HTML for your directory listings.
 
