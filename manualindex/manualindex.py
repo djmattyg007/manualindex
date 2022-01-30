@@ -121,7 +121,7 @@ def make_html(
         "date_format": date_format,
         "date_tz": date_tz,
         "dirpath": dirpath,
-        "has_parent": dirpath.count("/") > 1,
+        "has_parent": dirpath.count("/") > 0,
         "breadcrumbs": breadcrumbs,
         "entries": entries,
     }
