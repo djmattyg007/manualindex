@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
+<title>Index of /{{ dirpath }}</title>
 <style>
 .crumbs {
     list-style: none;
@@ -26,7 +28,7 @@ table > tbody > tr > td:first-child {
 </style>
 </head>
 <body>
-<h1>Index of /{% if has_parent %}{{ dirpath_r }}{% endif %}</h1>
+<h1>Index of /{{ dirpath }}</h1>
 <div>
     <ol class="crumbs">
 {% for crumb in breadcrumbs %}
@@ -50,11 +52,15 @@ table > tbody > tr > td:first-child {
 {% for entry in entries %}
     <tr>
 {% if entry.entry_type == "dir" %}
-        <td><a href="{{ entry.link }}index.html">{{ entry.label }}</a></td>
+        <td><a href="{{ entry.link }}index.html">{{ entry.info.name }}</a></td>
 {% else %}
-        <td><a href="{{ entry.link }}">{{ entry.label }}</a></td>
+        <td><a href="{{ entry.link }}">{{ entry.info.name }}</a></td>
 {% endif %}
-        <td>{{ entry.mtime.strftime(date_format) }}</td>
+{% if entry.mtime_local %}
+        <td>{{ entry.mtime_local.strftime(date_format) }}</td>
+{% else %}
+        <td>?</td>
+{% endif %}
 {% if entry.entry_type == "dir" %}
         <td class="entry-size">-</td>
 {% else %}
@@ -66,4 +72,4 @@ table > tbody > tr > td:first-child {
 </table>
 </div>
 </body>
-</html>
+</htm>

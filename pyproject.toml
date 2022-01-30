@@ -34,6 +34,7 @@ include = [
 python = "^3.9"
 Jinja2 = "^3.0.3"
 humanfriendly = "^10.0"
+fs = "^2.4.14"
 
 [tool.poetry.dev-dependencies]
 black = "^21.12b0"

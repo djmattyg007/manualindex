@@ -5,7 +5,15 @@ from zoneinfo import ZoneInfo
 
 from jinja2 import Environment, FileSystemLoader
 
-from . import default_template_name, default_template_path, generate
+from . import (
+    default_date_format,
+    default_date_tz,
+    default_index_filename,
+    default_root_label,
+    default_template_name,
+    default_template_path,
+    generate,
+)
 
 
 def make_parser() -> ArgumentParser:
@@ -21,8 +29,12 @@ def make_parser() -> ArgumentParser:
     parser.add_argument("--template-name", action="store", type=str, default=default_template_name)
 
     parser.add_argument("--base-urlpath", action="store", type=str, default="/")
-    parser.add_argument("--date-format", action="store", type=str, default="%Y-%m-%d %H:%I")
-    parser.add_argument("--timezone", action="store", type=ZoneInfo, default="UTC")
+    parser.add_argument("--date-format", action="store", type=str, default=default_date_format)
+    parser.add_argument("--timezone", action="store", type=ZoneInfo, default=default_date_tz)
+    parser.add_argument(
+        "--index-filename", action="store", type=str, default=default_index_filename
+    )
+    parser.add_argument("--root-label", action="store", type=str, default=default_root_label)
 
     return parser
 
@@ -50,4 +62,6 @@ def main(args: Optional[Sequence[str]] = None):
         base_urlpath=pargs.base_urlpath,
         date_format=pargs.date_format,
         date_tz=pargs.timezone,
+        index_filename=pargs.index_filename,
+        root_label=pargs.root_label,
     )
